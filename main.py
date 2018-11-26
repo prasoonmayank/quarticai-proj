@@ -28,29 +28,33 @@ with open(args.file_location) as json_file:
 
 def checkcondition(case, reqd_val, given_signal):
 	# The function is used to check the given value condition
-	old_val = case["value_condition"]
 	if(case["value_type"]=="Integer" and reqd_val["value_type"]=="Integer"):
 		given_value = reqd_val["value"]
 		newval = 'float(reqd_val["value"])'
-		case["value_condition"] = case["value_condition"].replace("value",newval)
-		if(not eval(case["value_condition"])):
-			notsatisfying(case, old_val, given_signal, given_value)
+		for given_condition in case["value_conditions"]:
+			unchanged_condition = given_condition
+			given_condition = given_condition.replace("value",newval)
+			if(not eval(given_condition)):
+				notsatisfying(case, unchanged_condition, given_signal, given_value)
 
 	elif(case["value_type"]=="String" and reqd_val["value_type"]=="String"):
 		given_value = reqd_val["value"]
 		newval = 'reqd_val["value"]'
-		case["value_condition"] = case["value_condition"].replace("value",newval)
-		if(not eval(case["value_condition"])):
-			notsatisfying(case, old_val, given_signal, given_value)
+		for given_condition in case["value_conditions"]:
+			unchanged_condition = given_condition
+			given_condition = given_condition.replace("value", newval)
+			if(not eval(given_condition)):
+				notsatisfying(case, unchanged_condition, given_signal, given_value)
 
 	elif(case["value_type"]=="Datetime" and reqd_val["value_type"]=="Datetime"):
 		given_value = reqd_val["value"]
 		f = "%Y-%m-%d %H:%M:%S"
 		newval = 'datetime.datetime.strptime(reqd_val["value"],f)'
-		case["value_condition"] = case["value_condition"].replace("value",newval)
-		if(not eval(case["value_condition"])):
-			notsatisfying(case, old_val, given_signal, given_value)
-	case["value_condition"] = old_val
+		for given_condition in case["value_conditions"]:
+			unchanged_condition = given_condition
+			given_condition = given_condition.replace("value", newval)
+			if(not eval(given_condition)):
+				notsatisfying(case, unchanged_condition, given_signal, given_value)
 
 def notsatisfying(case, old_val, given_signal, given_value):
 	# The function is used to print the values that dont satisfy the given output

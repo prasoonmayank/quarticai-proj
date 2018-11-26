@@ -4,7 +4,9 @@
 		"conditions": [
 			{
 				"value_type": "Integer",
-				"value_condition": "value<=240.00"
+				"value_conditions": [
+					"value<=240.00"
+				]
 			}
 		]
 	},
@@ -13,7 +15,9 @@
 		"conditions": [
 			{
 				"value_type": "String",
-				"value_condition": "value!='LOW'"
+				"value_conditions": [
+					"value!='LOW'"
+				]
 			}
 		]
 	},
@@ -22,7 +26,9 @@
 		"conditions": [
 			{
 				"value_type": "Datetime",
-				"value_condition": "value<datetime.datetime.now()"
+				"value_conditions": [
+					"value<datetime.datetime.now()"
+				]
 			}
 		]
 	}
