@@ -1,0 +1,29 @@
+[
+	{
+		"signal": "ATL1",
+		"conditions": [
+			{
+				"value_type": "Integer",
+				"value_condition": "value<=240.00"
+			}
+		]
+	},
+	{
+		"signal": "ATL2",
+		"conditions": [
+			{
+				"value_type": "String",
+				"value_condition": "value!='LOW'"
+			}
+		]
+	},
+	{
+		"signal": "ATL3",
+		"conditions": [
+			{
+				"value_type": "Datetime",
+				"value_condition": "value<datetime.datetime.now()"
+			}
+		]
+	}
+]
