@@ -1,9 +1,16 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import Http404, HttpResponse
+from .models import Rule
 
 # Create your views here.
 def index(request):
-	context = {}
-	return render(request, 'ruleengine/index.html', context)
+	return render(request, 'ruleengine/index.html')
 
+def add_rules(request):
+	signal_id = request.POST["signalid"]
+	vartype = request.POST["vartype"]
+	varcondition = request.POST["varcondition"]
+
+	given_rule = Rule(signal_id=signal_id,vartype=vartype,varcondition=varcondition)
+	given_rule.save()
+	return render(request, 'ruleengine/result.html')
 

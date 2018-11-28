@@ -10,10 +10,10 @@ class Rule(models.Model):
 		(STR, 'String'),
 		(DTM, 'Datetime'),
 		)
-	rule_signal = models.CharField(max_length=10)
-	rule_vartype = models.CharField(max_length=8)
+	signal_id = models.CharField(max_length=10)
+	vartype = models.CharField(max_length=8)
 	# rule_vartype = models.CharField(max_length=3, choices=VAR_CHOICES, default=INT)
-	rule_condition = models.CharField(max_length=200)
+	varcondition = models.CharField(max_length=200)
 
 	def __str__(self):
-		return self.rule_condition
+		return self.varcondition

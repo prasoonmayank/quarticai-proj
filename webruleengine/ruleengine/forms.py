@@ -2,8 +2,8 @@ from django import forms
 from .models import Rule
 
 class RulesForm(forms.Form):
-	signal = forms.CharField()
-	var_type = forms.CharField()
+	signal = forms.CharField(label='signal-Id')
+	var_type = forms.ChoiceField(choices=[('Integer', 'Integer'), ('String', 'String'), ('Datetime', 'Datetime')])
 	condition = forms.CharField()
 
 	class Meta:

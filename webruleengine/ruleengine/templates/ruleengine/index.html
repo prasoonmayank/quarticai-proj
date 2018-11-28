@@ -2,49 +2,40 @@
 <html>
 <head>
 	<title>Web based rule engine</title>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.js"></script>
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.js"></script>-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-<body ng-app="ruleengine">
-	<form ng-controller="formCtrl" method="post">
-		<fieldset ng-repeat="i in rulesRepeat(totalRules) track by $index" name = "">
-			<label>Enter signal name</label>
-			<input type="text" name="signalName">
-			<!--<select name="varType">
-				<option value="1">Integer</option>
-				<option value="2">String</option>
-				<option value="3">Datetime</option>
-			</select>-->
-			<label>Enter variable type</label>
-			<input type="text" name="varType">
-			<label>Enter condition</label>
-			<input type="text" name="condition">
-			<p><sub>Please enter the signal ID above for which you want to check the rules</sub></p>
-			<p><sub>Please enter the condition in the format eg. value<=240.00 or value!="LOW" or value<=datetime.datetime.now() and so on.</sub></p>
-		</fieldset>
-		<button ng-click="removeRule()">Remove Rule</button>
-		<button ng-click="addRule()">Add Rule</button>
-		<button type="submit" name="">Submit</button>
+<body>
+	<form method="post" action="/add_rules/">
+		{% csrf_token %}
+		<div class="field_wrapper">
+			<div>
+				<label>Enter signal ID</label>
+				<input type="text" name="signalid">
+				<label>Enter variable type</label>
+				<input type="text" name="vartype">
+				<label>Enter condition</label>
+				<input type="text" name="varcondition">
+				<a href="javascript:void(0)" class="addRule">Add</a>
+				<br><br>
+			</div>
+		</div>
+		<button type="submit">Submit</button>
 	</form>
 	<script type="text/javascript">
-		var app = angular.module('ruleengine', []);
+		$(document).ready(function () {
+			var addButton = $('.addRule');
+			var wrapper = $('.field_wrapper');
+			var field_html = '<div><label>Enter signal ID</label><input type="text" name=""><label>Enter variable type</label><input type="text" name=""><label>Enter condition</label><input type="text" name=""><a href="javascript:void(0)" class="remove_button">Remove</a><br><br></div>'
 
-		app.controller('formCtrl', ['$scope', '$http', '$q', function ($scope, $http, $q) {
-			$scope.totalRules = 1;
-			$scope.rulesRepeat = function (num) {
-				return new Array(num);
-			}
-			$scope.addRule = function () {
-				$scope.totalRules++;
-			}
-			$scope.removeRule = function () {
-				$scope.totalRules--;
-			}
-		}])
-
-		app.service('formApp', function ($http, $q, $rootScope) {
-
+			$(addButton).click(function() {
+				$(wrapper).append(field_html);
+			})
+			$(wrapper).on('click', '.remove_button', function(e) {
+				e.preventDefault();
+				$(this).parent('div').remove();
+			})
 		})
-
 	</script>
 </body>
 </html>
