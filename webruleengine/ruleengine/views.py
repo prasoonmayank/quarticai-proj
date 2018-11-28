@@ -6,9 +6,9 @@ def index(request):
 	return render(request, 'ruleengine/index.html')
 
 def add_rules(request):
-	signal_id = request.POST["signalid"]
-	vartype = request.POST["vartype"]
-	varcondition = request.POST["varcondition"]
+	signal_id = request.POST.getlist('signalid')
+	vartype = request.POST.getlist('vartype')
+	varcondition = request.POST.getlist('varcondition')
 
 	print(signal_id, " ",vartype, " ",varcondition)
 

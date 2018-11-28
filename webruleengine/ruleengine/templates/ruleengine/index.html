@@ -6,27 +6,27 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-	<form method="post" action="/add_rules/">
-		{% csrf_token %}
-		<div class="field_wrapper">
-			<div>
-				<label>Enter signal ID</label>
-				<input type="text" name="signalid">
-				<label>Enter variable type</label>
-				<input type="text" name="vartype">
-				<label>Enter condition</label>
-				<input type="text" name="varcondition">
-				<a href="javascript:void(0)" class="addRule">Add</a>
-				<br><br>
+		<form method="post" action="/add_rules/">
+			{% csrf_token %}
+			<div class="field_wrapper">
+				<div>
+					<label>Enter signal ID</label>
+					<input type="text" name="signalid" required>
+					<label>Enter variable type</label>
+					<input type="text" name="vartype" required>
+					<label>Enter condition</label>
+					<input type="text" name="varcondition" required>
+					<a href="javascript:void(0)" class="addRule">Add</a>
+					<br><br>
+				</div>
 			</div>
-		</div>
-		<button type="submit">Submit</button>
-	</form>
+			<button type="submit">Submit</button>
+		</form>
 	<script type="text/javascript">
 		$(document).ready(function () {
 			var addButton = $('.addRule');
 			var wrapper = $('.field_wrapper');
-			var field_html = '<div><label>Enter signal ID</label><input type="text" name=""><label>Enter variable type</label><input type="text" name=""><label>Enter condition</label><input type="text" name=""><a href="javascript:void(0)" class="remove_button">Remove</a><br><br></div>'
+			var field_html = '<div><label>Enter signal ID</label><input type="text" name="signalid" required><label>Enter variable type</label><input type="text" name="vartype" required><label>Enter condition</label><input type="text" name="varcondition" required><a href="javascript:void(0)" class="remove_button">Remove</a><br><br></div>'
 
 			$(addButton).click(function() {
 				$(wrapper).append(field_html);
