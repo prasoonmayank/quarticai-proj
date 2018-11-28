@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Rule
-from .compute import 
+from django.http import HttpResponse
+from .compute import convertIntoRules, get_string_result
 
 # Create your views here.
 def index(request):
@@ -13,5 +14,10 @@ def add_rules(request):
 
 	rules_json = convertIntoRules(signal_id, vartype, varcondition)
 
-	return render(request, 'ruleengine/result.html')
+	ansstring = get_string_result(rules_json)
+	print(ansstring)
+	if(ansstring == ""):
+		return HttpResponse("No signal with false rules")
+	else:
+		return HttpResponse(ansstring)
 

@@ -31,7 +31,7 @@
 		$(document).ready(function () {
 			var addButton = $('.addRule');
 			var wrapper = $('.field_wrapper');
-			var field_html = '<div><label>Enter signal ID</label><input type="text" name="signalid" required><label>Enter variable type</label><input type="text" name="vartype" required><label>Enter condition</label><input type="text" name="varcondition" required><a href="javascript:void(0)" class="remove_button">Remove</a><br><br></div>'
+			var field_html = '<div><label>Enter signal ID</label><input type="text" name="signalid" required><label>Enter variable type</label><select name="vartype" required><option>Integer</option><option>String</option><option>Datetime</option></select><label>Enter condition</label><input type="text" name="varcondition" required><a href="javascript:void(0)" class="remove_button">Remove</a><br><br></div>'
 
 			$(addButton).click(function() {
 				$(wrapper).append(field_html);
