@@ -15,7 +15,6 @@ def add_rules(request):
 	rules_json = convertIntoRules(signal_id, vartype, varcondition)
 
 	ansstring = get_string_result(rules_json)
-	print(ansstring)
 	if(ansstring == ""):
 		return HttpResponse("No signal with false rules")
 	else:
