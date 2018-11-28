@@ -16,8 +16,7 @@ The rules are stored as :
 
 [
 	{
-		"signal": "ATL1",
-		"conditions": [
+		ATL1": [
 			{
 				"value_type": "Integer",
 				"value_conditions": [
@@ -27,8 +26,7 @@ The rules are stored as :
 		]
 	},
 	{
-		"signal": "ATL2",
-		"conditions": [
+		"ATL2": [
 			{
 				"value_type": "String",
 				"value_conditions": [
@@ -38,8 +36,7 @@ The rules are stored as :
 		]
 	},
 	{
-		"signal": "ATL3",
-		"conditions": [
+		"ATL3": [
 			{
 				"value_type": "Datetime",
 				"value_conditions": [
