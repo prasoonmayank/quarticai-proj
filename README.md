@@ -19,9 +19,7 @@ The rules are stored as :
 		ATL1": [
 			{
 				"value_type": "Integer",
-				"value_conditions": [
-					"value<=240.00"
-				]
+				"value_condition":	"value<=240.00"
 			}
 		]
 	},
@@ -29,9 +27,7 @@ The rules are stored as :
 		"ATL2": [
 			{
 				"value_type": "String",
-				"value_conditions": [
-					"value!='LOW'"
-				]
+				"value_condition":	"value!='LOW'"
 			}
 		]
 	},
@@ -39,9 +35,7 @@ The rules are stored as :
 		"ATL3": [
 			{
 				"value_type": "Datetime",
-				"value_conditions": [
-					"value<=datetime.datetime.now()"
-				]
+				"value_condition": "value<=datetime.datetime.now()"
 			}
 		]
 	}
@@ -64,9 +58,11 @@ You can also decide to run the webengine rather than running the python file.
 To run the web based rule engine, in the conda environment
 
 git clone https://github.com/prasoonmayank/quarticai-proj
+
 cd webruleengine
 
 conda create -n projenv python=3.7.0
+
 conda install --yes -file requirements.txt
 
 python manage.py makemigrations
