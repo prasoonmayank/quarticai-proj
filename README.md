@@ -76,13 +76,13 @@ signalId - the signal Id
 vartype
 var_condition
 Eg. for integer var less than 240.00
-vartype is Integer and varcondition is "var<=240.00"
+vartype is Integer and varcondition is "value<=240.00"
 
 For string var not equal to LOW
-vartype is String and varcondition is "var!='LOW'"
+vartype is String and varcondition is "value!='LOW'"
 
 For datetime var not in future
-vartype is datetime and varconditino is "var<=datetime.datetime.now()"
+vartype is datetime and varconditino is "value<=datetime.datetime.now()"
 
 The given code automatically computes the values as required.
 
