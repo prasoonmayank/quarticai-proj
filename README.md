@@ -1,6 +1,6 @@
 # Quarticai-Proj
 The project is a rule engine for signal input json files. Currently the json file it considers is <a href="https://github.com/prasoonmayank/quarticai-proj/blob/master/raw_data.json">raw_data.json</a>.
-You can create rules for different signal values and print the ones that dont follow the given rule. For a live demo visit: thebrainer.pythonanywhere.com
+You can create rules for different signal values and print the ones that dont follow the given rule. For a live demo visit: http://thebrainer.pythonanywhere.com/
 
 ## Approach:
 The rules file is such that one can add multiple conditions for the different data types that are present within the signal. Thus, the different rules for the signals will be put in the json. At the same time the input is also stored in a different dictionary format locally. It is stored as :
