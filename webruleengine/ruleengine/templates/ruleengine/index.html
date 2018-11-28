@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Web based rule engine</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.js"></script>
+</head>
+<body ng-app="ruleengine">
+	<form ng-controller="formCtrl">
+		<label>Enter signal name</label>
+		<input type="text" name="signalName">
+		<label>Enter varible type</label>
+		<select name="varType">
+			<option value="1">Integer</option>
+			<option value="2">String</option>
+			<option value="3">Datetime</option>
+		</select>
+		<label>Enter condition</label>
+		<input type="text" name="condition">
+		<input type="submit" name="">
+		<p><sub>Please enter the signal ID above for which you want to check the rules</sub></p>
+		<p><sub>Please enter the condition in the format eg. value<=240.00 or value!="LOW" or value<=datetime.datetime.now() and so on.</sub></p>
+	</form>
+	<script type="text/javascript">
+		var app = angular.module('ruleengine', []);
+
+		app.controller('formCtrl', ['$scope', '$http', '$q', function ($scope, $http, $q) {
+			$http.get('json/check_out.json')
+				.then(function (response) {
+					$scope.signals = response.data;
+				})
+		}])
+
+		app.service('formApp', function ($http, $q, $rootScope) {
+			var signal = this;
+
+			signal.getAllSignals = function () {
+				var defer = $q.defer();
+
+				$http({
+					method: 'GET',
+					url: 'json/check_out.json'
+				}).then(function mysuccess(response) {
+					defer.resolve(response);
+				}, function myerror(error) {
+					defer.reject(error);
+				})
+
+				return defer.promise;
+			}
+
+			return task;
+		})
+
+	</script>
+</body>
+</html>
