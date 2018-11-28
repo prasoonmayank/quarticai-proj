@@ -6,6 +6,18 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
+	<p>The format is:
+signalId - the signal Id<br>
+vartype<br>
+var_condition<br><br>
+Eg. for integer var less than 240.00<br>
+vartype is Integer and varcondition is "var<=240.00"
+<br><br>
+For string var not equal to LOW<br>
+vartype is String and varcondition is "var!='LOW'"
+<br><br>
+For datetime var not in future<br>
+vartype is datetime and varcondition is "var<=datetime.datetime.now()"</p>
 		<form method="post" action="/add_rules/">
 			{% csrf_token %}
 			<div class="field_wrapper">
