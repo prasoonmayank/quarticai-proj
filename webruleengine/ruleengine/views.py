@@ -10,6 +10,8 @@ def add_rules(request):
 	vartype = request.POST["vartype"]
 	varcondition = request.POST["varcondition"]
 
+	print(signal_id, " ",vartype, " ",varcondition)
+
 	given_rule = Rule(signal_id=signal_id,vartype=vartype,varcondition=varcondition)
 	given_rule.save()
 	return render(request, 'ruleengine/result.html')
