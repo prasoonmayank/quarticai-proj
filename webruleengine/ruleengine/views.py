@@ -5,3 +5,5 @@ from django.http import Http404, HttpResponse
 def index(request):
 	context = {}
 	return render(request, 'ruleengine/index.html', context)
+
+
